@@ -1,0 +1,259 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Quản lý nhóm
+    </title>
+    <link type="text/css" rel="stylesheet" href="/themes/assets/css/bootstrap.min.css" />
+    <link href="/themes/cms/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- Ionicons -->
+    <link href="/themes/cms/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <!-- Theme style -->
+    <link href="/themes/cms/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="skin-blue">
+    
+        <header class="header">
+            <a href="/" class="logo">
+                <!-- Add the class icon to your logo image or logo icon to add the margining -->
+                Mỹ Sướng
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <div class="navbar-right">
+                    <ul class="nav navbar-nav">
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="glyphicon glyphicon-user"></i>
+                                <span>
+                                    <span id="ctl00_ctl00_LoginName2">admin</span>
+                                    <i class="caret"></i></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header bg-light-blue">
+                                    <p>
+                                        <span id="ctl00_ctl00_LoginName3">admin</span>
+                                    </p>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a id="ctl00_ctl00_LoginStatus1" class="btn btn-default btn-flat" href="javascript:__doPostBack(&#39;ctl00$ctl00$LoginStatus1$ctl00&#39;,&#39;&#39;)">Thoát</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div class="wrapper row-offcanvas row-offcanvas-left">
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="left-side sidebar-offcanvas">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel -->
+                    <div class="user-panel">
+                        <div class="pull-left info">
+                            <p>
+                                <span id="ctl00_ctl00_LoginName1">admin</span>
+                            </p>
+
+                            <a href="javascript:void(0)"><i class="fa fa-circle text-success"></i>Online</a>
+                        </div>
+                    </div>
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+
+                    <ul class="sidebar-menu">
+                        <li>
+                            <a href="/"><i class="fa fa-dashboard"></i><span>Trang chủ</span></a>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-users"></i>
+                                <span>Tài khoản</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="/Admin/Account/Account.aspx"><i class="fa fa-angle-double-right"></i>Danh sách tài khoản</a></li>
+                                <li><a href="/Admin/Account/Group.aspx"><i class="fa fa-angle-double-right"></i>Danh sách nhóm</a></li>
+                                <li><a href="/Admin/Account/Customer.aspx"><i class="fa fa-angle-double-right"></i>Danh sách khách hàng</a></li>
+                                <li><a href="/Admin/Account/Newsletter.aspx"><i class="fa fa-angle-double-right"></i>Newsletter</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-briefcase"></i>
+                                <span>Quản lý</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="/Admin/Catalog/"><i class="fa fa-angle-double-right"></i>Danh mục</a></li>
+                                <li><a href="/Admin/Products/"><i class="fa fa-angle-double-right"></i>Sản phẩm</a></li>
+                                <li><a href="/Admin/Orders/"><i class="fa fa-angle-double-right"></i>Đơn hàng</a></li>
+                                <li><a href="/Admin/Payment/PaymentMethod.aspx"><i class="fa fa-angle-double-right"></i>Phương thức thanh toán</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-tasks"></i>
+                                <span>Chức năng</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="/Admin/Adverts/"><i class="fa fa-angle-double-right"></i>Quảng cáo</a></li>
+                                <li><a href="/Admin/Videos/"><i class="fa fa-angle-double-right"></i>Video</a></li>
+                                <li><a href="/Admin/FeedBack/"><i class="fa fa-angle-double-right"></i>Phản hồi</a></li>
+                                <li><a href="/Admin/Banner/"><i class="fa fa-angle-double-right"></i>Logo</a></li>
+                                <li><a href="/Admin/New/"><i class="fa fa-angle-double-right"></i>Tin tức</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-wrench"></i>
+                                <span>Công cụ</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="/Admin/EmailTemplates/"><i class="fa fa-angle-double-right"></i>Email Template</a></li>
+                                <li><a href="/Admin/Tools/Menu.aspx"><i class="fa fa-angle-double-right"></i>Menu</a></li>
+                                <li><a href="/Admin/Tools/"><i class="fa fa-angle-double-right"></i>Cache</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+            <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                </section>
+                <!-- Main content -->
+                <section class="content">
+                    <div>
+
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="box box-primary">
+                                    <div class="box-header">
+                                        <h3 class="box-title">Quản lý nhóm</h3>
+                                    </div>
+                                    
+                                    
+                                    <div class="box-body">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                    <table class="table table-bordered" cellspacing="0" rules="all" border="1" id="ctl00_ctl00_content_Holder_Content_CGridView1" style="border-collapse: collapse;">
+                                                        <tr class="title">
+                                                            <th scope="col" style="width: 10px;">STT</th>
+                                                            <th scope="col"><a href="javascript:__doPostBack(&#39;ctl00$ctl00$content$Holder_Content$CGridView1&#39;,&#39;Sort$UserName&#39;)">Tên nhóm</a></th>
+                                                            <th scope="col" style="width: 80px;">Tình trạng</th>
+                                                            <th scope="col" style="width: 80px;">Tổng số khách hàng</th>
+                                                            <th scope="col" style="width: 120px;">&nbsp;</th>
+                                                            <th scope="col" style="width: 30px;">&nbsp;</th>
+                                                            <th scope="col" style="width: 30px;">&nbsp;</th>
+                                                        </tr>
+                                                        <tr class="alpha-2">
+                                                            <td align="center">1
+                                                            </td>
+                                                            <td>Test
+                                                            </td>
+                                                            <td>Đã kích hoạt
+                                                            </td>
+                                                            <td>3
+                                                            </td>
+                                                            <td>
+                                                                <a href="GroupInCustomer.aspx?id=74d4c8c8-393e-4a62-923c-4db6b8762836">Thêm khách hàng</a>
+                                                            </td>
+                                                            <td>
+                                                                <a id="ctl00_ctl00_content_Holder_Content_CGridView1_ctl02_link0" href="javascript:__doPostBack(&#39;ctl00$ctl00$content$Holder_Content$CGridView1$ctl02$link0&#39;,&#39;&#39;)">
+                                                                    <img src="/img/button/properties.png" />
+                                                                </a>
+                                                            </td>
+                                                            <td align="center">
+                                                                <a onclick="return confirm(&#39;Xác nhận xóa ?&#39;);" id="ctl00_ctl00_content_Holder_Content_CGridView1_ctl02_link" href="javascript:__doPostBack(&#39;ctl00$ctl00$content$Holder_Content$CGridView1$ctl02$link&#39;,&#39;&#39;)">
+                                                                    <img src="/img/button/exit.png" />
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        
+                                                    </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                </section>
+                <!-- /.content -->
+            </aside>
+            <!-- /.right-side -->
+        </div>
+
+        <script type="text/javascript">
+            //<![CDATA[
+            var Page_ValidationSummaries =  new Array(document.getElementById("ctl00_ctl00_content_Holder_Content_ValidationSummary1"));
+            var Page_Validators =  new Array(document.getElementById("ctl00_ctl00_content_Holder_Content_CustomValidator1"), document.getElementById("ctl00_ctl00_content_Holder_Content_RequiredFieldValidator1"));
+            //]]>
+        </script>
+
+        <script type="text/javascript">
+            //<![CDATA[
+            var ctl00_ctl00_content_Holder_Content_CustomValidator1 = document.all ? document.all["ctl00_ctl00_content_Holder_Content_CustomValidator1"] : document.getElementById("ctl00_ctl00_content_Holder_Content_CustomValidator1");
+            ctl00_ctl00_content_Holder_Content_CustomValidator1.errormessage = "CustomValidator";
+            ctl00_ctl00_content_Holder_Content_CustomValidator1.evaluationfunction = "CustomValidatorEvaluateIsValid";
+            var ctl00_ctl00_content_Holder_Content_RequiredFieldValidator1 = document.all ? document.all["ctl00_ctl00_content_Holder_Content_RequiredFieldValidator1"] : document.getElementById("ctl00_ctl00_content_Holder_Content_RequiredFieldValidator1");
+            ctl00_ctl00_content_Holder_Content_RequiredFieldValidator1.controltovalidate = "ctl00_ctl00_content_Holder_Content_txtName";
+            ctl00_ctl00_content_Holder_Content_RequiredFieldValidator1.errormessage = "Nhập tên nhóm";
+            ctl00_ctl00_content_Holder_Content_RequiredFieldValidator1.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+            ctl00_ctl00_content_Holder_Content_RequiredFieldValidator1.initialvalue = "";
+            //]]>
+        </script>
+
+
+        <script type="text/javascript">
+            //<![CDATA[
+
+            var Page_ValidationActive = false;
+            if (typeof(ValidatorOnLoad) == "function") {
+                ValidatorOnLoad();
+            }
+
+            function ValidatorOnSubmit() {
+                if (Page_ValidationActive) {
+                    return ValidatorCommonOnSubmit();
+                }
+                else {
+                    return true;
+                }
+            }
+            //]]>
+        </script>
+    <script type="text/javascript" src="/themes/assets/js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/themes/assets/js/bootstrap.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="/themes/cms/js/app.js" type="text/javascript"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="/themes/cms/js/demo.js" type="text/javascript"></script>
+</body>
+</html>

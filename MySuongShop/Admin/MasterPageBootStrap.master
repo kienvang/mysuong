@@ -1,0 +1,72 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/LayoutAdmin.master" AutoEventWireup="true" CodeFile="MasterPageBootStrap.master.cs" Inherits="Admin_MasterPageBootStrap" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="menu" runat="Server">
+    <ul class="sidebar-menu">
+        <li>
+            <a href="/"><i class="fa fa-dashboard"></i><span>Trang chủ</span></a>
+        </li>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-users"></i>
+                <span>Quản lý</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="/Admin/Account/Account.aspx"><i class="fa fa-angle-double-right"></i>Danh sách tài khoản</a></li>
+                <li><a href="/Admin/Account/Group.aspx"><i class="fa fa-angle-double-right"></i>Danh sách nhóm</a></li>
+                <li><a href="/Admin/Account/Customer.aspx"><i class="fa fa-angle-double-right"></i>Danh sách khách hàng</a></li>
+                <li><a href="/Admin/Employee/Branch.aspx"><i class="fa fa-angle-double-right"></i>Danh sách cửa hàng</a></li>
+                <li><a href="/Admin/Employee/"><i class="fa fa-angle-double-right"></i>Danh sách nhân viên</a></li>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-briefcase"></i>
+                <span>Bán hàng</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="/Admin/Catalog/"><i class="fa fa-angle-double-right"></i>Danh mục</a></li>
+                <li><a href="/Admin/Products/"><i class="fa fa-angle-double-right"></i>Sản phẩm</a></li>
+                <li><a href="/Admin/Orders/"><i class="fa fa-angle-double-right"></i>Đơn hàng</a></li>
+                <li><a href="/Admin/Payment/PaymentMethod.aspx"><i class="fa fa-angle-double-right"></i>Phương thức thanh toán</a></li>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-tasks"></i>
+                <span>Chức năng</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="/Admin/Adverts/"><i class="fa fa-angle-double-right"></i>Quảng cáo</a></li>
+                <li><a href="/Admin/Videos/"><i class="fa fa-angle-double-right"></i>Video</a></li>
+                <li><a href="/Admin/FeedBack/"><i class="fa fa-angle-double-right"></i>Phản hồi</a></li>
+                <li><a href="/Admin/Banner/"><i class="fa fa-angle-double-right"></i>Logo</a></li>
+                <li><a href="/Admin/New/"><i class="fa fa-angle-double-right"></i>Tin tức</a></li>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-wrench"></i>
+                <span>Công cụ</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="/Admin/Account/Newsletter.aspx"><i class="fa fa-angle-double-right"></i>Newsletter</a></li>
+                <li><a href="/Admin/EmailTemplates/"><i class="fa fa-angle-double-right"></i>Email Template</a></li>
+                <li><a href="/Admin/Tools/Menu.aspx"><i class="fa fa-angle-double-right"></i>Menu</a></li>
+                <li><a href="/Admin/Tools/"><i class="fa fa-angle-double-right"></i>Cache</a></li>
+            </ul>
+        </li>
+    </ul>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
+    <asp:ContentPlaceHolder ID="header" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="content" runat="Server">
+    <asp:ContentPlaceHolder ID="Holder_Content" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+

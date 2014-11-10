@@ -1,0 +1,19 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Admin/MasterPageBootStrap.master" AutoEventWireup="true" CodeFile="MasterPageBootstrap_2col.master.cs" Inherits="Admin_MasterPageBootstrap_2col" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="header" runat="Server">
+    <asp:ContentPlaceHolder ID="header" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="Holder_Content" runat="Server">
+    <div class="row">
+        <div class="col-sm-4 col-lg-2">
+            <asp:ContentPlaceHolder ID="Holder_menu" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div class="col-sm-8 col-lg-10">
+            <asp:ContentPlaceHolder ID="Holder_Content" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </div>
+</asp:Content>
+
