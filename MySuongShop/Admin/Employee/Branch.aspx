@@ -52,21 +52,13 @@
                             <%# Eval("Address")%>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField>
+                    <asp:TemplateField ItemStyle-CssClass="columns">
                         <ItemTemplate>
-                            <asp:LinkButton ID="link0" runat="server" CommandName="eedit" CommandArgument='<%# Eval("Id") %>' ValidationGroup="cmd">
-                                                <img src="/img/button/properties.png" />
+                            <asp:LinkButton ToolTip="Chỉnh sửa" CssClass="btn btn-success btn-xs" ID="link0" runat="server" CommandName="eedit" CommandArgument='<%# Eval("Id") %>' ValidationGroup="cmd">
+                                <i class="fa fa-edit"></i>
                             </asp:LinkButton>
-                        </ItemTemplate>
-                        <HeaderStyle Width="4%"></HeaderStyle>
-                    </asp:TemplateField>
-                    <asp:TemplateField>
-                        <HeaderStyle Width="4%"></HeaderStyle>
-                        <ItemStyle HorizontalAlign="Center" />
-                        <ItemTemplate>
-                            <asp:LinkButton OnClientClick="return confirm('Xác nhận xóa ?')" ID="link" runat="server" ValidationGroup="cmd"
-                                CommandName="ddel" CommandArgument='<%# Eval("Id") %>'>
-                                                    <img src="/img/button/exit.png" />
+                            <asp:LinkButton ToolTip="Xóa" CssClass="btn btn-danger btn-xs" OnClientClick="return confirm('Xác nhận xóa ?')" ID="link" runat="server" ValidationGroup="cmd" CommandName="ddel" CommandArgument='<%# Eval("Id") %>'>
+                                <i class="fa fa-trash-o"></i>
                             </asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
