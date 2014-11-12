@@ -1,6 +1,11 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/LayoutAdmin.master" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="manage_MasterPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="menu" runat="Server">
+    <ul class="sidebar-menu">
+        <li>
+            <a href="/"><i class="fa fa-dashboard"></i><span>Trang chủ</span></a>
+        </li>
+    </ul>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
     <asp:ContentPlaceHolder ID="head" runat="server">

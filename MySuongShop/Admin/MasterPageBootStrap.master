@@ -12,11 +12,12 @@
                 <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
-                <li><a href="/Admin/Account/Account.aspx"><i class="fa fa-angle-double-right"></i>Danh sách tài khoản</a></li>
-                <li><a href="/Admin/Account/Group.aspx"><i class="fa fa-angle-double-right"></i>Danh sách nhóm</a></li>
-                <li><a href="/Admin/Account/Customer.aspx"><i class="fa fa-angle-double-right"></i>Danh sách khách hàng</a></li>
-                <li><a href="/Admin/Employee/Branch.aspx"><i class="fa fa-angle-double-right"></i>Danh sách cửa hàng</a></li>
-                <li><a href="/Admin/Employee/"><i class="fa fa-angle-double-right"></i>Danh sách nhân viên</a></li>
+                <li><a href="/Admin/Account/Account.aspx"><i class="fa fa-angle-double-right"></i>Tài khoản</a></li>
+                <li><a href="/Admin/Account/Group.aspx"><i class="fa fa-angle-double-right"></i>Nhóm</a></li>
+                <li><a href="/Admin/Account/Customer.aspx"><i class="fa fa-angle-double-right"></i>Khách hàng</a></li>
+                <li><a href="/Admin/Account/Customer.aspx"><i class="fa fa-angle-double-right"></i>Khách hàng tổng hợp</a></li>
+                <li><a href="/Admin/Employee/Branch.aspx"><i class="fa fa-angle-double-right"></i>Cửa hàng</a></li>
+                <li><a href="/Admin/Employee/"><i class="fa fa-angle-double-right"></i>Nhân viên</a></li>
             </ul>
         </li>
         <li class="treeview">

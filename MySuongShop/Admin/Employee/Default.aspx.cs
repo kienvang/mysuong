@@ -48,4 +48,12 @@ public partial class Admin_Employee_Default : System.Web.UI.Page
     {
         return BranchManager.CreateInstant().GetName(id);
     }
+
+    [System.Web.Services.WebMethod]
+    public static string ChangePass(string username)
+    {
+        MembershipUser u = Membership.GetUser(username);
+        u.ChangePassword(u.ResetPassword(), "123456");
+        return "";
+    }
 }
