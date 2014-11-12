@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using LayerHelper.ShopCake.BLL;
+using LayerHelper.ShopCake.DAL.EntityClasses;
 using Library.Tools;
 
 public partial class Admin_Employee_Default : System.Web.UI.Page
@@ -30,9 +32,20 @@ public partial class Admin_Employee_Default : System.Web.UI.Page
         {
             case "ddel":
                 Guid id = FGuid.ToGuid(e.CommandArgument);
-                EmployeeManager.CreateInstant().DeleteById(id);
+                EmployeeEntity emp = EmployeeManager.CreateInstant().SelectOne(id);
+                if (emp != null)
+                {
+                    Membership.DeleteUser(emp.Username);
+                    EmployeeManager.CreateInstant().DeleteById(id);
+                }
+                
                 WebUtility.Refesh(Page);
                 break;
         }
+    }
+
+    public string BranchName(Guid id)
+    {
+        return BranchManager.CreateInstant().GetName(id);
     }
 }

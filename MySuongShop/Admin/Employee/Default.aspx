@@ -32,9 +32,14 @@
                             <%# Eval("Name")%>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Địa chỉ" HeaderStyle-Width="40%">
+                    <asp:TemplateField HeaderText="Địa chỉ" HeaderStyle-Width="20%">
                         <ItemTemplate>
                             <%# Eval("Address")%>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Cửa hàng" HeaderStyle-Width="20%">
+                        <ItemTemplate>
+                            <%# BranchName(Library.Tools.FGuid.ToGuid(Eval("BranchId"))) %>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-CssClass="columns">

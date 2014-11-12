@@ -1,9 +1,9 @@
-﻿.nav li
+﻿.nav.nav-stacked li
 {
 	border-bottom: 1px solid #dbdbdb;
 }
 
-.nav li:first-child
+.nav.nav-stacked li:first-child
 {
 	border-top: 1px solid #dbdbdb;
 }
@@ -12,4 +12,10 @@
 {
 	white-space:nowrap;
 	width:2%;
+}
+
+.error ul
+{
+	margin:0px;
+	padding-left:15px;
 }

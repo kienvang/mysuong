@@ -43,5 +43,13 @@ namespace LayerHelper.ShopCake.BLL
             string strSQL = "Select * From Branch";
             return SqlHelper.ExecuteDataTable(SqlHelper.ConnectionStringShopCake, CommandType.Text, strSQL);
         }
+
+        public string GetName(Guid id)
+        {
+            BranchEntity data = SelectOne(id);
+            if (data != null)
+                return data.Name;
+            return "";
+        }
 	}
 }
