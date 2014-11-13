@@ -11,6 +11,7 @@ using System.IO;
 using System.Web.UI.WebControls;
 using System.Web.UI;
 using System.Collections.Generic;
+using System.Web.Security;
 
 namespace Library.Tools
 {
@@ -30,6 +31,15 @@ namespace Library.Tools
                 string _CurrentUserName = "";
                 if (HttpContext.Current.User != null && HttpContext.Current.User.Identity.IsAuthenticated) _CurrentUserName = HttpContext.Current.User.Identity.Name;
                 return _CurrentUserName;
+            }
+        }
+
+        public static Guid CurrentUserId
+        {
+            get
+            {
+                if (HttpContext.Current.User.Identity.IsAuthenticated) return new Guid(Membership.GetUser().ProviderUserKey.ToString());
+                return Guid.Empty;
             }
         }
 
