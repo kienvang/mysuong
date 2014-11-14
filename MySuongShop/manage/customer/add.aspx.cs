@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using LayerHelper.ShopCake.BLL;
 using LayerHelper.ShopCake.DAL.EntityClasses;
 using Library.Tools;
 
@@ -24,14 +25,18 @@ public partial class manage_customer_add : System.Web.UI.Page
         ob.Address = txtAddress.Text.Trim();
         ob.Information = txtInformation.Text.Trim();
         ob.CreatedDate = DateTime.Now;
-        ob.EmployeeId = Util
+        ob.EmployeeId = Util.CurrentUserId;
+        return ob;
     }
 
     protected void btnSave_Click(object sender, EventArgs e)
     {
         if (Page.IsValid)
         {
-
+            CustomerCollectionEntity ob = getObj();
+            CustomerCollectionManager.CreateInstant().Insert(ob);
+            CookieManager.setCookie(this, "state", "1");
+            WebUtility.Refesh(this);
         }
     }
 }

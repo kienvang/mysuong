@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/manage/MasterPage.master" AutoEventWireup="true" CodeFile="add.aspx.cs" Inherits="manage_customer_add" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="content" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="content" runat="Server">
     <h3>Thông tin khách hàng</h3>
     <div class="row">
         <div class="col-sm-6 col-lg-4">
@@ -23,12 +23,17 @@
                 <asp:TextBox ID="txtPhone" runat="server" CssClass="form-control"></asp:TextBox>
             </div>
             <div class="form-group">
-                <label>Email</label>
+                <label>Email<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Email không hợp lệ" ControlToValidate="txtEmail" Display="None" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator></label>
                 <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control"></asp:TextBox>
             </div>
             <div class="form-group">
                 <label>Ngày sinh</label>
-                <asp:TextBox ID="txtBirthday" runat="server" CssClass="form-control"></asp:TextBox>
+                <div class="input-group">
+                    <asp:TextBox ID="txtBirthday" runat="server" CssClass="form-control date"></asp:TextBox>
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label>Địa chỉ</label>
@@ -39,9 +44,17 @@
                 <asp:TextBox ID="txtInformation" runat="server" CssClass="form-control"></asp:TextBox>
             </div>
             <div class="form-group">
-                <asp:Button ID="btnSave" runat="server" Text="Thêm" CssClass="btn btn-primary" OnClick="btnSave_Click"/>
+                <asp:Button ID="btnSave" runat="server" Text="Thêm" CssClass="btn btn-primary" OnClick="btnSave_Click" />
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        $(function () {
+            if ($.cookie('state') != undefined && $.cookie('state') == '1') {
+                $.jalert('Thêm thành công');
+                $.removeCookie('state', { path: '/' });
+            }
+        });
+    </script>
 </asp:Content>
 
