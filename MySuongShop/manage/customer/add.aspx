@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/manage/MasterPage.master" AutoEventWireup="true" CodeFile="add.aspx.cs" Inherits="manage_customer_add" %>
+﻿<%@ Page Title="Khách hàng" Language="C#" MasterPageFile="~/manage/MasterPage.master" AutoEventWireup="true" CodeFile="add.aspx.cs" Inherits="manage_customer_add" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
@@ -29,7 +29,7 @@
             <div class="form-group">
                 <label>Ngày sinh</label>
                 <div class="input-group">
-                    <asp:TextBox ID="txtBirthday" runat="server" CssClass="form-control date"></asp:TextBox>
+                    <asp:TextBox ID="txtBirthday" runat="server" CssClass="form-control fdate"></asp:TextBox>
                     <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                     </div>
@@ -50,6 +50,9 @@
     </div>
     <script type="text/javascript">
         $(function () {
+            //Datemask dd/mm/yyyy
+            $(".fdate").inputmask("dd/mm/yyyy", { "placeholder": "dd/mm/yyyy" });
+
             if ($.cookie('state') != undefined && $.cookie('state') == '1') {
                 $.jalert('Thêm thành công');
                 $.removeCookie('state', { path: '/' });

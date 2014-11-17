@@ -17,6 +17,8 @@ using LayerHelper.ShopCake.DAL.HelperClasses;
 using Library.Tools;
 using SD.LLBLGen.Pro.ORMSupportClasses;
 
+using LayerHelper.Service.BLL;
+using LayerHelper.Service.DAL.EntityClasses;
 namespace LayerHelper.ShopCake.BLL
 {
 	public class EmployeeManager : EmployeeManagerBase
@@ -42,6 +44,21 @@ namespace LayerHelper.ShopCake.BLL
         {
             string strSQL = "Select * From Employee";
             return SqlHelper.ExecuteDataTable(SqlHelper.ConnectionStringShopCake, CommandType.Text, strSQL);
+        }
+
+        public string getName(Guid Id)
+        {
+            EmployeeEntity data = SelectOne(Id);
+            if (data != null)
+            {
+                return data.Name;
+            }
+            LayerHelper.Service.DAL.HelperClasses.EntityCollection<AspnetUsersEntity> u = AspnetUsersManager.CreateInstant().SelectByUserIdLST(Id);
+            if (u != null && u.Items.Count > 0)
+            {
+                return u[0].UserName;
+            }
+            return "";
         }
 	}
 }

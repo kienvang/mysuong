@@ -15,7 +15,7 @@
                 <li><a href="/Admin/Account/Account.aspx"><i class="fa fa-angle-double-right"></i>Tài khoản</a></li>
                 <li><a href="/Admin/Account/Group.aspx"><i class="fa fa-angle-double-right"></i>Nhóm</a></li>
                 <li><a href="/Admin/Account/Customer.aspx"><i class="fa fa-angle-double-right"></i>Khách hàng</a></li>
-                <li><a href="/Admin/Account/Customer.aspx"><i class="fa fa-angle-double-right"></i>Khách hàng tổng hợp</a></li>
+                <li><a href="/Admin/Account/CustomerCollection.aspx"><i class="fa fa-angle-double-right"></i>Khách hàng tổng hợp</a></li>
                 <li><a href="/Admin/Employee/Branch.aspx"><i class="fa fa-angle-double-right"></i>Cửa hàng</a></li>
                 <li><a href="/Admin/Employee/"><i class="fa fa-angle-double-right"></i>Nhân viên</a></li>
             </ul>

@@ -14,6 +14,7 @@ using LayerHelper.ShopCake.DAL;
 using LayerHelper.ShopCake.DAL.EntityClasses;
 using LayerHelper.ShopCake.DAL.FactoryClasses;
 using LayerHelper.ShopCake.DAL.HelperClasses;
+using Library.Tools;
 using SD.LLBLGen.Pro.ORMSupportClasses;
 
 namespace LayerHelper.ShopCake.BLL
@@ -36,5 +37,11 @@ namespace LayerHelper.ShopCake.BLL
 		{
 			return new CustomerCollectionManager();
 		}
+
+        public DataTable GetAll()
+        {
+            string strSQL = "Select * From CustomerCollection";
+            return SqlHelper.ExecuteDataTable(SqlHelper.ConnectionStringShopCake, CommandType.Text, strSQL);
+        }
 	}
 }
