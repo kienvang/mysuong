@@ -42,7 +42,7 @@ namespace LayerHelper.ShopCake.BLL
 
         public DataTable GetAll(string customer, string product, string date)
         {
-            string strSQL = "Select t.*, c.Name as CustomerName, e.Name as EmployeeName, b.Name as BranchName " +
+            string strSQL = "Select t.ProductName, Amount, Discount, c.Name as CustomerName, e.Name as EmployeeName, b.Name as BranchName, OrderDate " +
                             "From OrderTemp t INNER JOIN CustomerCollection c ON t.CustomerId = c.Id " +
                             "    LEFT JOIN Employee e ON t.EmployeeId = e.Id " +
                             "    LEFT JOIN Branch b ON e.BranchId = b.Id " +

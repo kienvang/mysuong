@@ -47,11 +47,11 @@ public partial class manage_customer_add : System.Web.UI.Page
         if (Page.IsValid)
         {
             CustomerCollectionEntity ob = getObj();
-             
+
             if (ob.Email != string.Empty)
             {
                 EmailTemplatesEntity template = EmailTemplatesManager.CreateInstant().GetTemplateByTemplateCode("CustomerRegister");
-                HistoryEmail.SendMailHistory(GetEmail.EmailFrom, ob.Email, template.Subject, template.Body);
+                HistoryEmail.SendMailHistory("", GetEmail.EmailFrom, ob.Email, "", GetEmail.EmailTo, template.Subject, template.Body);
             }
             CustomerCollectionManager.CreateInstant().Insert(ob);
 

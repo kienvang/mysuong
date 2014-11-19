@@ -1,8 +1,6 @@
 
 
 
-
-
 /*
 '===============================================================================
 '  LayerHelper.ShopCake.BL.OrderTempManagerBase
@@ -42,7 +40,7 @@ namespace LayerHelper.ShopCake.BLL
 		}
 
 		
-		public OrderTempEntity Insert(Guid Id, Guid CustomerId, string ProductName, decimal Amount, decimal Discount, DateTime OrderDate, Guid EmployeeId, string Description)
+		public OrderTempEntity Insert(Guid Id, Guid CustomerId, string ProductName, int Amount, int Discount, DateTime OrderDate, Guid EmployeeId, string Description)
 		{
 			OrderTempEntity _OrderTempEntity = new OrderTempEntity();
 			using(DataAccessAdapterBase adapter = (new DataAccessAdapterFactory()).CreateAdapter())
@@ -61,7 +59,7 @@ namespace LayerHelper.ShopCake.BLL
 			return _OrderTempEntity;
 		}
 
-		public OrderTempEntity Insert(Guid CustomerId, string ProductName, decimal Amount, decimal Discount, DateTime OrderDate, Guid EmployeeId, string Description)
+		public OrderTempEntity Insert(Guid CustomerId, string ProductName, int Amount, int Discount, DateTime OrderDate, Guid EmployeeId, string Description)
 		{
 			OrderTempEntity _OrderTempEntity = new OrderTempEntity();
 			using(DataAccessAdapterBase adapter = (new DataAccessAdapterFactory()).CreateAdapter())
@@ -107,7 +105,7 @@ namespace LayerHelper.ShopCake.BLL
 			return toReturn;
 		}
 
-		public bool Update(Guid Id, Guid CustomerId, string ProductName, decimal Amount, decimal Discount, DateTime OrderDate, Guid EmployeeId, string Description)
+		public bool Update(Guid Id, Guid CustomerId, string ProductName, int Amount, int Discount, DateTime OrderDate, Guid EmployeeId, string Description)
 		{
 			bool toReturn = false;
 			using(DataAccessAdapterBase adapter = (new DataAccessAdapterFactory()).CreateAdapter())
@@ -202,7 +200,7 @@ namespace LayerHelper.ShopCake.BLL
 			return toReturn;
 		}
 		
-		public int DeleteByAmount(decimal Amount)
+		public int DeleteByAmount(int Amount)
 		{
 			int toReturn = 0;
 			RelationPredicateBucket filter = new RelationPredicateBucket();
@@ -218,7 +216,7 @@ namespace LayerHelper.ShopCake.BLL
 			return toReturn;
 		}
 		
-		public int DeleteByDiscount(decimal Discount)
+		public int DeleteByDiscount(int Discount)
 		{
 			int toReturn = 0;
 			RelationPredicateBucket filter = new RelationPredicateBucket();
@@ -553,7 +551,7 @@ namespace LayerHelper.ShopCake.BLL
 
 		
 		// Return EntityCollection<OrderTempEntity>
-		public EntityCollection<OrderTempEntity> SelectByAmountLST(decimal Amount)
+		public EntityCollection<OrderTempEntity> SelectByAmountLST(int Amount)
 		{
 			EntityCollection<OrderTempEntity> _OrderTempCollection = new EntityCollection<OrderTempEntity>();
 			RelationPredicateBucket filter = new RelationPredicateBucket();
@@ -570,7 +568,7 @@ namespace LayerHelper.ShopCake.BLL
 		}
 		
 		// Return EntityCollection<OrderTempEntity>
-		public EntityCollection<OrderTempEntity> SelectByAmountLST_Paged(decimal Amount, int PageNumber, int PageSize)
+		public EntityCollection<OrderTempEntity> SelectByAmountLST_Paged(int Amount, int PageNumber, int PageSize)
 		{
 			EntityCollection<OrderTempEntity> _OrderTempCollection = new EntityCollection<OrderTempEntity>();
 			RelationPredicateBucket filter = new RelationPredicateBucket();
@@ -587,7 +585,7 @@ namespace LayerHelper.ShopCake.BLL
 		}
 		
 		// Return DataTable
-		public DataTable SelectByAmountRDT(decimal Amount)
+		public DataTable SelectByAmountRDT(int Amount)
 		{
 			DataTable toReturn = new DataTable();
 			EntityCollection _OrderTempCollection = new EntityCollection(new OrderTempEntityFactory());
@@ -605,7 +603,7 @@ namespace LayerHelper.ShopCake.BLL
 		}
 		
 		// Return DataTable
-		public DataTable SelectByAmountRDT_Paged(decimal Amount, int PageNumber, int PageSize)
+		public DataTable SelectByAmountRDT_Paged(int Amount, int PageNumber, int PageSize)
 		{
 			DataTable toReturn = new DataTable();
 			EntityCollection _OrderTempCollection = new EntityCollection(new OrderTempEntityFactory());
@@ -625,7 +623,7 @@ namespace LayerHelper.ShopCake.BLL
 
 		
 		// Return EntityCollection<OrderTempEntity>
-		public EntityCollection<OrderTempEntity> SelectByDiscountLST(decimal Discount)
+		public EntityCollection<OrderTempEntity> SelectByDiscountLST(int Discount)
 		{
 			EntityCollection<OrderTempEntity> _OrderTempCollection = new EntityCollection<OrderTempEntity>();
 			RelationPredicateBucket filter = new RelationPredicateBucket();
@@ -642,7 +640,7 @@ namespace LayerHelper.ShopCake.BLL
 		}
 		
 		// Return EntityCollection<OrderTempEntity>
-		public EntityCollection<OrderTempEntity> SelectByDiscountLST_Paged(decimal Discount, int PageNumber, int PageSize)
+		public EntityCollection<OrderTempEntity> SelectByDiscountLST_Paged(int Discount, int PageNumber, int PageSize)
 		{
 			EntityCollection<OrderTempEntity> _OrderTempCollection = new EntityCollection<OrderTempEntity>();
 			RelationPredicateBucket filter = new RelationPredicateBucket();
@@ -659,7 +657,7 @@ namespace LayerHelper.ShopCake.BLL
 		}
 		
 		// Return DataTable
-		public DataTable SelectByDiscountRDT(decimal Discount)
+		public DataTable SelectByDiscountRDT(int Discount)
 		{
 			DataTable toReturn = new DataTable();
 			EntityCollection _OrderTempCollection = new EntityCollection(new OrderTempEntityFactory());
@@ -677,7 +675,7 @@ namespace LayerHelper.ShopCake.BLL
 		}
 		
 		// Return DataTable
-		public DataTable SelectByDiscountRDT_Paged(decimal Discount, int PageNumber, int PageSize)
+		public DataTable SelectByDiscountRDT_Paged(int Discount, int PageNumber, int PageSize)
 		{
 			DataTable toReturn = new DataTable();
 			EntityCollection _OrderTempCollection = new EntityCollection(new OrderTempEntityFactory());

@@ -86,6 +86,7 @@ namespace Library.Tools
 
         public static int ConvertInt(string value)
         {
+            value = value.Replace(",", "");
             int f = 0;
             int.TryParse(value, NumberStyles.Integer,new CultureInfo("en-US") ,out f);
             return f;

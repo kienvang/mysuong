@@ -24,8 +24,8 @@ public partial class manage_customer_order : System.Web.UI.Page
             OrderTempEntity ob = new OrderTempEntity();
             ob.CustomerId = FGuid.ToGuid(ddlCustomerId.Text);
             ob.ProductName = txtProductName.Text;
-            ob.Amount = FNumber.ConvertDecimal(txtAmount.Text);
-            ob.Discount = FNumber.ConvertDecimal(txtDiscount.Text);
+            ob.Amount = FNumber.ConvertInt(txtAmount.Text);
+            ob.Discount = FNumber.ConvertInt(txtDiscount.Text);
             ob.EmployeeId = Util.CurrentUserId;
             ob.Description = txtDecription.Text;
             OrderTempManager.CreateInstant().Insert(ob);

@@ -31,7 +31,8 @@
         </div>
     </div>
     <div class="form-group">
-        <asp:Button ID="btnSave" runat="server" Text="Tìm" CssClass="btn btn-primary" />
+        <asp:Button ID="btnSearch" runat="server" Text="Tìm" CssClass="btn btn-primary" OnClick="btnSearch_Click" />
+        <asp:Button ID="btnExport" runat="server" Text="Excel" CssClass="btn btn-primary" OnClick="btnExport_Click" />
     </div>
     <br />
     <div class="row">
