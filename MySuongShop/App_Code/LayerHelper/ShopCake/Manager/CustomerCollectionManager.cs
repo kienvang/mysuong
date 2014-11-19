@@ -43,5 +43,12 @@ namespace LayerHelper.ShopCake.BLL
             string strSQL = "Select * From CustomerCollection";
             return SqlHelper.ExecuteDataTable(SqlHelper.ConnectionStringShopCake, CommandType.Text, strSQL);
         }
+
+        public DataTable GetByKeyword(string keyword)
+        {
+            string strSQL = "Select * From CustomerCollection Where Name LIKE '%' + @keyword + '%' OR Phone LIKE '%' + @keyword + '%'";
+            SqlParameter param = new SqlParameter("@keyword", keyword);
+            return SqlHelper.ExecuteDataTable(CommandType.Text, strSQL, param);
+        }
 	}
 }

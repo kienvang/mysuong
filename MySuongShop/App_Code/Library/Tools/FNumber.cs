@@ -75,6 +75,7 @@ namespace Library.Tools
 
         public static decimal ConvertDecimal(string value)
         {
+            value = value.Replace(",", "");
             return decimal.Parse(value, new CultureInfo("en-US"));
         }
 

@@ -6,15 +6,25 @@
             <a href="/"><i class="fa fa-dashboard"></i><span>Trang chủ</span></a>
         </li>
         <li>
-            <a href="/manage/customer/add.aspx"><i class="fa fa-dashboard"></i><span>Khách hàng</span></a>
+            <a href="/manage/customer/add.aspx"><i class="fa fa-user-md"></i><span>Khách hàng</span></a>
+            <a href="/manage/customer/order.aspx"><i class="fa fa-shopping-cart"></i><span>Bán hàng</span></a>
         </li>
     </ul>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="content" runat="Server">
+    <nav class="navbar options navbar-default" role="navigation">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li><a href="/manage/customer/add.aspx">Khách hàng</a></li>
+                <li><a href="/manage/customer/order.aspx">Bán hàng</a></li>
+            </ul>
+        </div>
+    </nav>
     <asp:ContentPlaceHolder ID="content" runat="server">
     </asp:ContentPlaceHolder>
 </asp:Content>

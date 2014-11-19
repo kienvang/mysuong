@@ -40,7 +40,7 @@ namespace LayerHelper.ShopCake.BLL
 		}
 
 		
-		public CustomerCollectionEntity Insert(Guid Id, string Name, string Address, string Phone, string Email, DateTime Birthday, string Information, DateTime CreatedDate, Guid EmployeeId, Guid GroupId)
+		public CustomerCollectionEntity Insert(Guid Id, string Name, string Address, string Phone, string Email, DateTime Birthday, string Information, DateTime CreatedDate, Guid EmployeeId, Guid GroupId, int DistrictId)
 		{
 			CustomerCollectionEntity _CustomerCollectionEntity = new CustomerCollectionEntity();
 			using(DataAccessAdapterBase adapter = (new DataAccessAdapterFactory()).CreateAdapter())
@@ -56,12 +56,13 @@ namespace LayerHelper.ShopCake.BLL
 				_CustomerCollectionEntity.CreatedDate = CreatedDate;
 				_CustomerCollectionEntity.EmployeeId = EmployeeId;
 				_CustomerCollectionEntity.GroupId = GroupId;
+				_CustomerCollectionEntity.DistrictId = DistrictId;
 				adapter.SaveEntity(_CustomerCollectionEntity, true);
 			}
 			return _CustomerCollectionEntity;
 		}
 
-		public CustomerCollectionEntity Insert(string Name, string Address, string Phone, string Email, DateTime Birthday, string Information, DateTime CreatedDate, Guid EmployeeId, Guid GroupId)
+		public CustomerCollectionEntity Insert(string Name, string Address, string Phone, string Email, DateTime Birthday, string Information, DateTime CreatedDate, Guid EmployeeId, Guid GroupId, int DistrictId)
 		{
 			CustomerCollectionEntity _CustomerCollectionEntity = new CustomerCollectionEntity();
 			using(DataAccessAdapterBase adapter = (new DataAccessAdapterFactory()).CreateAdapter())
@@ -76,6 +77,7 @@ namespace LayerHelper.ShopCake.BLL
 				_CustomerCollectionEntity.CreatedDate = CreatedDate;
 				_CustomerCollectionEntity.EmployeeId = EmployeeId;
 				_CustomerCollectionEntity.GroupId = GroupId;
+				_CustomerCollectionEntity.DistrictId = DistrictId;
 				adapter.SaveEntity(_CustomerCollectionEntity, true);
 			}
 			return _CustomerCollectionEntity;
@@ -109,7 +111,7 @@ namespace LayerHelper.ShopCake.BLL
 			return toReturn;
 		}
 
-		public bool Update(Guid Id, string Name, string Address, string Phone, string Email, DateTime Birthday, string Information, DateTime CreatedDate, Guid EmployeeId, Guid GroupId)
+		public bool Update(Guid Id, string Name, string Address, string Phone, string Email, DateTime Birthday, string Information, DateTime CreatedDate, Guid EmployeeId, Guid GroupId, int DistrictId)
 		{
 			bool toReturn = false;
 			using(DataAccessAdapterBase adapter = (new DataAccessAdapterFactory()).CreateAdapter())
@@ -127,6 +129,7 @@ namespace LayerHelper.ShopCake.BLL
 					_CustomerCollectionEntity.CreatedDate = CreatedDate;
 					_CustomerCollectionEntity.EmployeeId = EmployeeId;
 					_CustomerCollectionEntity.GroupId = GroupId;
+					_CustomerCollectionEntity.DistrictId = DistrictId;
 					adapter.SaveEntity(_CustomerCollectionEntity, true);
 					toReturn = true;
 				}
@@ -309,6 +312,22 @@ namespace LayerHelper.ShopCake.BLL
 			
 			IPredicateExpression _PredicateExpression = new PredicateExpression();
 			_PredicateExpression.Add(CustomerCollectionFields.GroupId == GroupId);
+			filter.PredicateExpression.Add(_PredicateExpression);
+			
+			using (DataAccessAdapterBase adapter = (new DataAccessAdapterFactory()).CreateAdapter())
+			{
+				toReturn = adapter.DeleteEntitiesDirectly("CustomerCollectionEntity", filter);
+			}
+			return toReturn;
+		}
+		
+		public int DeleteByDistrictId(int DistrictId)
+		{
+			int toReturn = 0;
+			RelationPredicateBucket filter = new RelationPredicateBucket();
+			
+			IPredicateExpression _PredicateExpression = new PredicateExpression();
+			_PredicateExpression.Add(CustomerCollectionFields.DistrictId == DistrictId);
 			filter.PredicateExpression.Add(_PredicateExpression);
 			
 			using (DataAccessAdapterBase adapter = (new DataAccessAdapterFactory()).CreateAdapter())
@@ -1081,6 +1100,78 @@ namespace LayerHelper.ShopCake.BLL
 			
 			IPredicateExpression _PredicateExpression = new PredicateExpression();
 			_PredicateExpression.Add(CustomerCollectionFields.GroupId == GroupId);
+			filter.PredicateExpression.Add(_PredicateExpression);
+
+			using (DataAccessAdapterBase adapter = (new DataAccessAdapterFactory()).CreateAdapter())
+			{
+				adapter.FetchTypedList(_CustomerCollectionCollection.EntityFactoryToUse.CreateFields(), toReturn, filter, 0, null, true, null, PageNumber, PageSize);
+			}
+			return toReturn;
+		}
+
+
+		
+		// Return EntityCollection<CustomerCollectionEntity>
+		public EntityCollection<CustomerCollectionEntity> SelectByDistrictIdLST(int DistrictId)
+		{
+			EntityCollection<CustomerCollectionEntity> _CustomerCollectionCollection = new EntityCollection<CustomerCollectionEntity>();
+			RelationPredicateBucket filter = new RelationPredicateBucket();
+
+			IPredicateExpression _PredicateExpression = new PredicateExpression();
+			_PredicateExpression.Add(CustomerCollectionFields.DistrictId == DistrictId);
+			filter.PredicateExpression.Add(_PredicateExpression);
+			
+			using (DataAccessAdapterBase adapter = (new DataAccessAdapterFactory()).CreateAdapter())
+			{
+				adapter.FetchEntityCollection(_CustomerCollectionCollection, filter, 0, null);
+			}
+			return _CustomerCollectionCollection;
+		}
+		
+		// Return EntityCollection<CustomerCollectionEntity>
+		public EntityCollection<CustomerCollectionEntity> SelectByDistrictIdLST_Paged(int DistrictId, int PageNumber, int PageSize)
+		{
+			EntityCollection<CustomerCollectionEntity> _CustomerCollectionCollection = new EntityCollection<CustomerCollectionEntity>();
+			RelationPredicateBucket filter = new RelationPredicateBucket();
+
+			IPredicateExpression _PredicateExpression = new PredicateExpression();
+			_PredicateExpression.Add(CustomerCollectionFields.DistrictId == DistrictId);
+			filter.PredicateExpression.Add(_PredicateExpression);
+			
+			using (DataAccessAdapterBase adapter = (new DataAccessAdapterFactory()).CreateAdapter())
+			{
+				adapter.FetchEntityCollection(_CustomerCollectionCollection, filter, 0, null, null, PageNumber, PageSize);
+			}
+			return _CustomerCollectionCollection;
+		}
+		
+		// Return DataTable
+		public DataTable SelectByDistrictIdRDT(int DistrictId)
+		{
+			DataTable toReturn = new DataTable();
+			EntityCollection _CustomerCollectionCollection = new EntityCollection(new CustomerCollectionEntityFactory());
+			RelationPredicateBucket filter = new RelationPredicateBucket();
+			
+			IPredicateExpression _PredicateExpression = new PredicateExpression();
+			_PredicateExpression.Add(CustomerCollectionFields.DistrictId == DistrictId);
+			filter.PredicateExpression.Add(_PredicateExpression);
+
+			using (DataAccessAdapterBase adapter = (new DataAccessAdapterFactory()).CreateAdapter())
+			{
+				adapter.FetchTypedList(_CustomerCollectionCollection.EntityFactoryToUse.CreateFields(), toReturn, filter, true);
+			}
+			return toReturn;
+		}
+		
+		// Return DataTable
+		public DataTable SelectByDistrictIdRDT_Paged(int DistrictId, int PageNumber, int PageSize)
+		{
+			DataTable toReturn = new DataTable();
+			EntityCollection _CustomerCollectionCollection = new EntityCollection(new CustomerCollectionEntityFactory());
+			RelationPredicateBucket filter = new RelationPredicateBucket();
+			
+			IPredicateExpression _PredicateExpression = new PredicateExpression();
+			_PredicateExpression.Add(CustomerCollectionFields.DistrictId == DistrictId);
 			filter.PredicateExpression.Add(_PredicateExpression);
 
 			using (DataAccessAdapterBase adapter = (new DataAccessAdapterFactory()).CreateAdapter())

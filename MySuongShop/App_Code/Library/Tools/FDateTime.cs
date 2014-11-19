@@ -129,7 +129,21 @@ namespace Library.Tools
 
         public static DateTime ConvertDate(string value)
         {
-            return Convert.ToDateTime(value, new CultureInfo("vi-VN"));
+            try
+            {
+                return DateTime.Parse(value, new CultureInfo("vi-VN"), DateTimeStyles.NoCurrentDateDefault);
+            }
+            catch
+            {
+                try
+                {
+                    return DateTime.Parse(value, new CultureInfo("en-US"), DateTimeStyles.NoCurrentDateDefault);
+                }
+                catch
+                {
+                    return DateTime.Now;
+                }
+            }
         }
 
         public static DateTime ConvertTime(string value)

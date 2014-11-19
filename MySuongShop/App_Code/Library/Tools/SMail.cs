@@ -14,7 +14,7 @@ public class SGmail
     SmtpClient sClient = new SmtpClient();
 
     //xác định smtpserver để gửi mail, với gmail là smtp.gmail.com
-    string smtpServer = "mail.vbn.vn";
+    string smtpServer = "mail.mysuong.com.vn";
     /// <summary>
     /// Thuộc tính truyền hoặc lấy mail server khi gửi mail client
     /// </summary>
@@ -25,7 +25,7 @@ public class SGmail
     }
 
     //Gửi từ mail nào, là một địa chỉ mail từ gmail ex: sample_user_name@gmail.com
-    string smtpMailFrom = "webmaster@vbn.vn";
+    string smtpMailFrom = "sales@mysuong.com.vn";
     /// <summary>
     /// Thuộc tính truyền hoặc lấy giá trị địa chỉ gửi mail
     /// </summary>
@@ -36,7 +36,7 @@ public class SGmail
     }
 
     //user đăng nhập vào gmail
-    string smtpUser = "webmaster@vbn.vn";
+    string smtpUser = "sales@mysuong.com.vn";
     /// <summary>
     /// Thuộc tính user đăng nhập mail, có thể get và set
     /// </summary>
@@ -47,7 +47,7 @@ public class SGmail
     }
 
     //mật khẩu đăng nhập gmail
-    string smtpPassword = "bakery*#";
+    string smtpPassword = "@b3yJo94";
     /// <summary>
     /// Thuộc tính mật khẩu đăng nhập mail, chỉ có thể truyền
     /// </summary>

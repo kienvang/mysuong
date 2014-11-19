@@ -1,5 +1,5 @@
 ﻿$(function () {
     if ($('.date').length > 0) {
-        $('.date').datepicker();
+        $('.date').datepicker({format: 'dd/mm/yyyy'});
     }
 });

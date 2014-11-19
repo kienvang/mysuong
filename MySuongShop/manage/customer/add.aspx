@@ -36,6 +36,12 @@
                 </div>
             </div>
             <div class="form-group">
+                <label>Quận</label>
+                <asp:DropDownList ID="ddlDistrict" runat="server" AppendDataBoundItems="true" CssClass="form-control">
+                    <asp:ListItem Value="">--- Chọn Quận ---</asp:ListItem>
+                </asp:DropDownList>
+            </div>
+            <div class="form-group">
                 <label>Địa chỉ</label>
                 <asp:TextBox ID="txtAddress" runat="server" CssClass="form-control"></asp:TextBox>
             </div>

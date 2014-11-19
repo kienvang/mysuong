@@ -51,6 +51,7 @@ public partial class Admin_Employee_Add : System.Web.UI.Page
         ob.Name = txtName.Text.Trim();
         ob.Address = txtAddress.Text.Trim();
         ob.Phone = txtPhone.Text.Trim();
+        ob.BranchId = FGuid.ToGuid(ddlBranch.SelectedValue);
         return ob;
     }
 

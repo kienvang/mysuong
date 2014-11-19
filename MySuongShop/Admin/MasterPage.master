@@ -67,6 +67,10 @@
                                 <ul>
                                     <li><a href="/Admin/Account/Group.aspx">Danh sách nhóm</a></li>
                                     <li><a href="/Admin/Account/Customer.aspx">Danh sách khách hàng</a></li>
+                                    <li><a href="/Admin/Account/CustomerCollection.aspx">Danh sách khách hàng tổng hợp</a></li>
+                                    <li><a href="/Admin/Employee/Branch.aspx">Cửa hàng</a></li>
+                                    <li><a href="/Admin/Employee">Danh sách nhân viên</a></li>
+                                    <li><a href="/Admin/Employee">Danh sách bán hàng</a></li>
                                     <li><a href="/Admin/Account/Newsletter.aspx">Newsletter</a></li>
                                 </ul>
                             </li>

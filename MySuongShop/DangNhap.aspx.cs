@@ -10,6 +10,7 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
+using Modules.Role;
 
 public partial class DangNhap : System.Web.UI.Page
 {
@@ -17,7 +18,13 @@ public partial class DangNhap : System.Web.UI.Page
     {
         if (!string.IsNullOrEmpty(Library.Tools.Util.CurrentUserName))
         {
-            Response.Redirect("/");
+            if (CheckRoles.CreateInstant().IsRoles(EnumsRoles.Employee))
+            {
+                Response.Redirect("/manage");
+            }
+            else
+                Response.Redirect("/");
+
         }
     }
 
