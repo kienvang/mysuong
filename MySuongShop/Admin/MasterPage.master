@@ -71,7 +71,7 @@
                                     <li><a href="/Admin/Employee/Branch.aspx">Cửa hàng</a></li>
                                     <li><a href="/Admin/Employee">Danh sách nhân viên</a></li>
                                     <li><a href="/Admin/Employee">Danh sách bán hàng</a></li>
-                                    <li><a href="/Admin/Account/Newsletter.aspx">Newsletter</a></li>
+                                    
                                 </ul>
                             </li>
                             <li><a href="/Admin/Catalog/" class="menulevel0">Danh Mục</a> </li>
@@ -94,6 +94,7 @@
                             </li>--%>
                             <li><a href="#" class="menulevel0">Chức năng</a>
                                 <ul>
+                                    <li><a href="/Admin/newsletter/Newsletter.aspx">Newsletter</a></li>
                                     <li><a href="/Admin/Adverts/">Quảng Cáo</a></li>
                                     <li><a href="/Admin/Videos/">Videos</a></li>
                                     <li><a href="/Admin/FeedBack/">Feed Back</a></li>
@@ -104,6 +105,7 @@
                             </li>
                             <li><a href="#" class="menulevel0">Công cụ</a>
                                 <ul>
+                                    
                                     <li><a href="/Admin/EmailTemplates/">Email Templates</a></li>
                                     <li><a href="/Admin/Tools/Menu.aspx">Menu</a></li>
                                     <li><a href="/Admin/Tools/">Cache</a></li>

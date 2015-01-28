@@ -195,7 +195,8 @@ namespace LayerHelper.ShopCake.BLL
             EmailTemplatesEntity format = new EmailTemplatesEntity();
             string content = GetFileTemplateNewsletter();
             format.Subject = "";
-            format.Body = content.Replace("[body/]", body).Replace("[product/]", product);
+            string show = string.IsNullOrEmpty(product.Trim()) ? "none" : "block";
+            format.Body = content.Replace("[body/]", body).Replace("[product/]", product).Replace("[show/]", show);
             return format;
         }
 

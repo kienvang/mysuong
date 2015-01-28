@@ -40,7 +40,7 @@ namespace LayerHelper.ShopCake.BLL
 		}
 
 		
-		public NewsletterEntity Insert(Guid Id, string Subject, string Body, DateTime SendDate, bool IsSend, string EmailSend, string EmailQueue, string State, DateTime StartDate, DateTime EndDate, bool IsEnable, string CreatedBy, DateTime CreatedDate, string UpdatedBy, DateTime UpdatedDate, bool IsSendAll)
+		public NewsletterEntity Insert(Guid Id, string Subject, string Body, string Banner, DateTime SendDate, bool IsSend, string EmailSend, string EmailQueue, string State, DateTime StartDate, DateTime EndDate, bool IsEnable, string CreatedBy, DateTime CreatedDate, string UpdatedBy, DateTime UpdatedDate, string SendType)
 		{
 			NewsletterEntity _NewsletterEntity = new NewsletterEntity();
 			using(DataAccessAdapterBase adapter = (new DataAccessAdapterFactory()).CreateAdapter())
@@ -49,6 +49,7 @@ namespace LayerHelper.ShopCake.BLL
 				_NewsletterEntity.Id = Id;
 				_NewsletterEntity.Subject = Subject;
 				_NewsletterEntity.Body = Body;
+				_NewsletterEntity.Banner = Banner;
 				_NewsletterEntity.SendDate = SendDate;
 				_NewsletterEntity.IsSend = IsSend;
 				_NewsletterEntity.EmailSend = EmailSend;
@@ -61,13 +62,13 @@ namespace LayerHelper.ShopCake.BLL
 				_NewsletterEntity.CreatedDate = CreatedDate;
 				_NewsletterEntity.UpdatedBy = UpdatedBy;
 				_NewsletterEntity.UpdatedDate = UpdatedDate;
-				_NewsletterEntity.IsSendAll = IsSendAll;
+				_NewsletterEntity.SendType = SendType;
 				adapter.SaveEntity(_NewsletterEntity, true);
 			}
 			return _NewsletterEntity;
 		}
 
-		public NewsletterEntity Insert(string Subject, string Body, DateTime SendDate, bool IsSend, string EmailSend, string EmailQueue, string State, DateTime StartDate, DateTime EndDate, bool IsEnable, string CreatedBy, DateTime CreatedDate, string UpdatedBy, DateTime UpdatedDate, bool IsSendAll)
+		public NewsletterEntity Insert(string Subject, string Body, string Banner, DateTime SendDate, bool IsSend, string EmailSend, string EmailQueue, string State, DateTime StartDate, DateTime EndDate, bool IsEnable, string CreatedBy, DateTime CreatedDate, string UpdatedBy, DateTime UpdatedDate, string SendType)
 		{
 			NewsletterEntity _NewsletterEntity = new NewsletterEntity();
 			using(DataAccessAdapterBase adapter = (new DataAccessAdapterFactory()).CreateAdapter())
@@ -75,6 +76,7 @@ namespace LayerHelper.ShopCake.BLL
 				
 				_NewsletterEntity.Subject = Subject;
 				_NewsletterEntity.Body = Body;
+				_NewsletterEntity.Banner = Banner;
 				_NewsletterEntity.SendDate = SendDate;
 				_NewsletterEntity.IsSend = IsSend;
 				_NewsletterEntity.EmailSend = EmailSend;
@@ -87,7 +89,7 @@ namespace LayerHelper.ShopCake.BLL
 				_NewsletterEntity.CreatedDate = CreatedDate;
 				_NewsletterEntity.UpdatedBy = UpdatedBy;
 				_NewsletterEntity.UpdatedDate = UpdatedDate;
-				_NewsletterEntity.IsSendAll = IsSendAll;
+				_NewsletterEntity.SendType = SendType;
 				adapter.SaveEntity(_NewsletterEntity, true);
 			}
 			return _NewsletterEntity;
@@ -121,7 +123,7 @@ namespace LayerHelper.ShopCake.BLL
 			return toReturn;
 		}
 
-		public bool Update(Guid Id, string Subject, string Body, DateTime SendDate, bool IsSend, string EmailSend, string EmailQueue, string State, DateTime StartDate, DateTime EndDate, bool IsEnable, string CreatedBy, DateTime CreatedDate, string UpdatedBy, DateTime UpdatedDate, bool IsSendAll)
+		public bool Update(Guid Id, string Subject, string Body, string Banner, DateTime SendDate, bool IsSend, string EmailSend, string EmailQueue, string State, DateTime StartDate, DateTime EndDate, bool IsEnable, string CreatedBy, DateTime CreatedDate, string UpdatedBy, DateTime UpdatedDate, string SendType)
 		{
 			bool toReturn = false;
 			using(DataAccessAdapterBase adapter = (new DataAccessAdapterFactory()).CreateAdapter())
@@ -132,6 +134,7 @@ namespace LayerHelper.ShopCake.BLL
 				
 					_NewsletterEntity.Subject = Subject;
 					_NewsletterEntity.Body = Body;
+					_NewsletterEntity.Banner = Banner;
 					_NewsletterEntity.SendDate = SendDate;
 					_NewsletterEntity.IsSend = IsSend;
 					_NewsletterEntity.EmailSend = EmailSend;
@@ -144,7 +147,7 @@ namespace LayerHelper.ShopCake.BLL
 					_NewsletterEntity.CreatedDate = CreatedDate;
 					_NewsletterEntity.UpdatedBy = UpdatedBy;
 					_NewsletterEntity.UpdatedDate = UpdatedDate;
-					_NewsletterEntity.IsSendAll = IsSendAll;
+					_NewsletterEntity.SendType = SendType;
 					adapter.SaveEntity(_NewsletterEntity, true);
 					toReturn = true;
 				}
@@ -215,6 +218,22 @@ namespace LayerHelper.ShopCake.BLL
 			
 			IPredicateExpression _PredicateExpression = new PredicateExpression();
 			_PredicateExpression.Add(NewsletterFields.Body == Body);
+			filter.PredicateExpression.Add(_PredicateExpression);
+			
+			using (DataAccessAdapterBase adapter = (new DataAccessAdapterFactory()).CreateAdapter())
+			{
+				toReturn = adapter.DeleteEntitiesDirectly("NewsletterEntity", filter);
+			}
+			return toReturn;
+		}
+		
+		public int DeleteByBanner(string Banner)
+		{
+			int toReturn = 0;
+			RelationPredicateBucket filter = new RelationPredicateBucket();
+			
+			IPredicateExpression _PredicateExpression = new PredicateExpression();
+			_PredicateExpression.Add(NewsletterFields.Banner == Banner);
 			filter.PredicateExpression.Add(_PredicateExpression);
 			
 			using (DataAccessAdapterBase adapter = (new DataAccessAdapterFactory()).CreateAdapter())
@@ -416,13 +435,13 @@ namespace LayerHelper.ShopCake.BLL
 			return toReturn;
 		}
 		
-		public int DeleteByIsSendAll(bool IsSendAll)
+		public int DeleteBySendType(string SendType)
 		{
 			int toReturn = 0;
 			RelationPredicateBucket filter = new RelationPredicateBucket();
 			
 			IPredicateExpression _PredicateExpression = new PredicateExpression();
-			_PredicateExpression.Add(NewsletterFields.IsSendAll == IsSendAll);
+			_PredicateExpression.Add(NewsletterFields.SendType == SendType);
 			filter.PredicateExpression.Add(_PredicateExpression);
 			
 			using (DataAccessAdapterBase adapter = (new DataAccessAdapterFactory()).CreateAdapter())
@@ -691,6 +710,78 @@ namespace LayerHelper.ShopCake.BLL
 			
 			IPredicateExpression _PredicateExpression = new PredicateExpression();
 			_PredicateExpression.Add(NewsletterFields.Body == Body);
+			filter.PredicateExpression.Add(_PredicateExpression);
+
+			using (DataAccessAdapterBase adapter = (new DataAccessAdapterFactory()).CreateAdapter())
+			{
+				adapter.FetchTypedList(_NewsletterCollection.EntityFactoryToUse.CreateFields(), toReturn, filter, 0, null, true, null, PageNumber, PageSize);
+			}
+			return toReturn;
+		}
+
+
+		
+		// Return EntityCollection<NewsletterEntity>
+		public EntityCollection<NewsletterEntity> SelectByBannerLST(string Banner)
+		{
+			EntityCollection<NewsletterEntity> _NewsletterCollection = new EntityCollection<NewsletterEntity>();
+			RelationPredicateBucket filter = new RelationPredicateBucket();
+
+			IPredicateExpression _PredicateExpression = new PredicateExpression();
+			_PredicateExpression.Add(NewsletterFields.Banner == Banner);
+			filter.PredicateExpression.Add(_PredicateExpression);
+			
+			using (DataAccessAdapterBase adapter = (new DataAccessAdapterFactory()).CreateAdapter())
+			{
+				adapter.FetchEntityCollection(_NewsletterCollection, filter, 0, null);
+			}
+			return _NewsletterCollection;
+		}
+		
+		// Return EntityCollection<NewsletterEntity>
+		public EntityCollection<NewsletterEntity> SelectByBannerLST_Paged(string Banner, int PageNumber, int PageSize)
+		{
+			EntityCollection<NewsletterEntity> _NewsletterCollection = new EntityCollection<NewsletterEntity>();
+			RelationPredicateBucket filter = new RelationPredicateBucket();
+
+			IPredicateExpression _PredicateExpression = new PredicateExpression();
+			_PredicateExpression.Add(NewsletterFields.Banner == Banner);
+			filter.PredicateExpression.Add(_PredicateExpression);
+			
+			using (DataAccessAdapterBase adapter = (new DataAccessAdapterFactory()).CreateAdapter())
+			{
+				adapter.FetchEntityCollection(_NewsletterCollection, filter, 0, null, null, PageNumber, PageSize);
+			}
+			return _NewsletterCollection;
+		}
+		
+		// Return DataTable
+		public DataTable SelectByBannerRDT(string Banner)
+		{
+			DataTable toReturn = new DataTable();
+			EntityCollection _NewsletterCollection = new EntityCollection(new NewsletterEntityFactory());
+			RelationPredicateBucket filter = new RelationPredicateBucket();
+			
+			IPredicateExpression _PredicateExpression = new PredicateExpression();
+			_PredicateExpression.Add(NewsletterFields.Banner == Banner);
+			filter.PredicateExpression.Add(_PredicateExpression);
+
+			using (DataAccessAdapterBase adapter = (new DataAccessAdapterFactory()).CreateAdapter())
+			{
+				adapter.FetchTypedList(_NewsletterCollection.EntityFactoryToUse.CreateFields(), toReturn, filter, true);
+			}
+			return toReturn;
+		}
+		
+		// Return DataTable
+		public DataTable SelectByBannerRDT_Paged(string Banner, int PageNumber, int PageSize)
+		{
+			DataTable toReturn = new DataTable();
+			EntityCollection _NewsletterCollection = new EntityCollection(new NewsletterEntityFactory());
+			RelationPredicateBucket filter = new RelationPredicateBucket();
+			
+			IPredicateExpression _PredicateExpression = new PredicateExpression();
+			_PredicateExpression.Add(NewsletterFields.Banner == Banner);
 			filter.PredicateExpression.Add(_PredicateExpression);
 
 			using (DataAccessAdapterBase adapter = (new DataAccessAdapterFactory()).CreateAdapter())
@@ -1567,13 +1658,13 @@ namespace LayerHelper.ShopCake.BLL
 
 		
 		// Return EntityCollection<NewsletterEntity>
-		public EntityCollection<NewsletterEntity> SelectByIsSendAllLST(bool IsSendAll)
+		public EntityCollection<NewsletterEntity> SelectBySendTypeLST(string SendType)
 		{
 			EntityCollection<NewsletterEntity> _NewsletterCollection = new EntityCollection<NewsletterEntity>();
 			RelationPredicateBucket filter = new RelationPredicateBucket();
 
 			IPredicateExpression _PredicateExpression = new PredicateExpression();
-			_PredicateExpression.Add(NewsletterFields.IsSendAll == IsSendAll);
+			_PredicateExpression.Add(NewsletterFields.SendType == SendType);
 			filter.PredicateExpression.Add(_PredicateExpression);
 			
 			using (DataAccessAdapterBase adapter = (new DataAccessAdapterFactory()).CreateAdapter())
@@ -1584,13 +1675,13 @@ namespace LayerHelper.ShopCake.BLL
 		}
 		
 		// Return EntityCollection<NewsletterEntity>
-		public EntityCollection<NewsletterEntity> SelectByIsSendAllLST_Paged(bool IsSendAll, int PageNumber, int PageSize)
+		public EntityCollection<NewsletterEntity> SelectBySendTypeLST_Paged(string SendType, int PageNumber, int PageSize)
 		{
 			EntityCollection<NewsletterEntity> _NewsletterCollection = new EntityCollection<NewsletterEntity>();
 			RelationPredicateBucket filter = new RelationPredicateBucket();
 
 			IPredicateExpression _PredicateExpression = new PredicateExpression();
-			_PredicateExpression.Add(NewsletterFields.IsSendAll == IsSendAll);
+			_PredicateExpression.Add(NewsletterFields.SendType == SendType);
 			filter.PredicateExpression.Add(_PredicateExpression);
 			
 			using (DataAccessAdapterBase adapter = (new DataAccessAdapterFactory()).CreateAdapter())
@@ -1601,14 +1692,14 @@ namespace LayerHelper.ShopCake.BLL
 		}
 		
 		// Return DataTable
-		public DataTable SelectByIsSendAllRDT(bool IsSendAll)
+		public DataTable SelectBySendTypeRDT(string SendType)
 		{
 			DataTable toReturn = new DataTable();
 			EntityCollection _NewsletterCollection = new EntityCollection(new NewsletterEntityFactory());
 			RelationPredicateBucket filter = new RelationPredicateBucket();
 			
 			IPredicateExpression _PredicateExpression = new PredicateExpression();
-			_PredicateExpression.Add(NewsletterFields.IsSendAll == IsSendAll);
+			_PredicateExpression.Add(NewsletterFields.SendType == SendType);
 			filter.PredicateExpression.Add(_PredicateExpression);
 
 			using (DataAccessAdapterBase adapter = (new DataAccessAdapterFactory()).CreateAdapter())
@@ -1619,14 +1710,14 @@ namespace LayerHelper.ShopCake.BLL
 		}
 		
 		// Return DataTable
-		public DataTable SelectByIsSendAllRDT_Paged(bool IsSendAll, int PageNumber, int PageSize)
+		public DataTable SelectBySendTypeRDT_Paged(string SendType, int PageNumber, int PageSize)
 		{
 			DataTable toReturn = new DataTable();
 			EntityCollection _NewsletterCollection = new EntityCollection(new NewsletterEntityFactory());
 			RelationPredicateBucket filter = new RelationPredicateBucket();
 			
 			IPredicateExpression _PredicateExpression = new PredicateExpression();
-			_PredicateExpression.Add(NewsletterFields.IsSendAll == IsSendAll);
+			_PredicateExpression.Add(NewsletterFields.SendType == SendType);
 			filter.PredicateExpression.Add(_PredicateExpression);
 
 			using (DataAccessAdapterBase adapter = (new DataAccessAdapterFactory()).CreateAdapter())

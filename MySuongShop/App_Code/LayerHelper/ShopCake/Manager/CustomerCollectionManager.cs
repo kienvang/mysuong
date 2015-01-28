@@ -40,7 +40,7 @@ namespace LayerHelper.ShopCake.BLL
 
         public DataTable GetAll()
         {
-            string strSQL = "Select * From CustomerCollection";
+            string strSQL = "Select *, CONVERT(VARCHAR(19),[CreatedDate], 105) + ' ' + CONVERT(VARCHAR(19),[CreatedDate], 108) as date From CustomerCollection";
             return SqlHelper.ExecuteDataTable(SqlHelper.ConnectionStringShopCake, CommandType.Text, strSQL);
         }
 

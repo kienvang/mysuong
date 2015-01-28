@@ -1,5 +1,7 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/LayoutAdmin.master" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="manage_MasterPage" %>
 
+<%@ Import Namespace="Modules.Role" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="menu" runat="Server">
     <ul class="sidebar-menu">
         <li>
@@ -8,6 +10,10 @@
         <li>
             <a href="/manage/customer/add.aspx"><i class="fa fa-user-md"></i><span>Khách hàng</span></a>
             <a href="/manage/customer/order.aspx"><i class="fa fa-shopping-cart"></i><span>Bán hàng</span></a>
+            <% if (CheckRoles.CreateInstant().IsRoles(EnumsRoles.Administrator))
+               { %>
+            <a href="/Admin/Account/CustomerCollection.aspx"><i class="fa fa-desktop"></i><span>Quản trị</span></a>
+            <%} %>
         </li>
     </ul>
 </asp:Content>

@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="Server">
     <h3>Thông tin khách hàng</h3>
     <div class="row">
-        <div class="col-sm-6 col-lg-4">
+        <div class="col-xs-12 col-sm-6 col-lg-4">
             <div class="form-group">
                 <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="error callout callout-danger" />
                 <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="CustomValidator" Display="None"></asp:CustomValidator>

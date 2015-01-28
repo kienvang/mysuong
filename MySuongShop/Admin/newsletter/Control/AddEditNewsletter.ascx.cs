@@ -14,6 +14,7 @@ using System.Xml.Linq;
 using LayerHelper.ShopCake.BLL;
 using LayerHelper.ShopCake.DAL.EntityClasses;
 using Library.Tools;
+using LayerHelper.ShopCake.DAL.HelperClasses;
 
 public partial class Admin_Account_Control_AddEditNewsletter : System.Web.UI.UserControl
 {
@@ -37,11 +38,22 @@ public partial class Admin_Account_Control_AddEditNewsletter : System.Web.UI.Use
         {
             txtSubject.Text = nll.Subject;
             txtBody.Value = nll.Body;
-            txtSendDate.Text = nll.SendDate.ToString("dd/MM/yyy");
+            //txtSendDate.Text = nll.SendDate.ToString("dd/MM/yyy");
             chkIsEnable.Checked = nll.IsEnable;
             hidId.Value = nll.Id.ToString();
             btnUpdate.Text = "Cập nhật";
-            rdoSendAll.Checked = nll.IsSendAll;
+            txtEmail.Text = nll.EmailQueue;
+            if (nll.SendType == "ALL")
+                rdoSendAll.Checked = true;
+            else if (nll.SendType == "GROUP")
+                rdoSendGroup.Checked = true;
+            else
+                rdoSendEmail.Checked = true;
+            if (!string.IsNullOrEmpty(nll.Banner))
+            {
+                imgBanner.ImageUrl = nll.Banner;
+                imgBanner.Visible = true;
+            }
         }
 
         DataTable group = CustomerGroupManager.CreateInstant().GetInNewsletter(getId());
@@ -54,16 +66,24 @@ public partial class Admin_Account_Control_AddEditNewsletter : System.Web.UI.Use
         }
     }
 
-    NewsletterEntity GetNewsletter()
+    NewsletterEntity GetNewsletter(NewsletterEntity tmp = null)
     {
         NewsletterEntity nll = new NewsletterEntity();
+        if (tmp != null) nll = tmp;
         nll.Subject = txtSubject.Text.Trim();
         nll.Body = txtBody.Value.Trim();
         nll.IsEnable = chkIsEnable.Checked;
-        nll.SendDate = FDateTime.ConvertDate(txtSendDate.Text.Trim());
+        nll.SendDate = DateTime.Now;// FDateTime.ConvertDate(txtSendDate.Text.Trim());
         nll.UpdatedBy = Util.CurrentUserName;
         nll.UpdatedDate = DateTime.Now;
-        nll.IsSendAll = rdoSendAll.Checked;
+        nll.SendType = rdoSendAll.Checked ? "ALL" : (rdoSendGroup.Checked ? "GROUP" : "EMAIL");
+        nll.EmailQueue = txtEmail.Text.Trim();
+
+        if (fileBanner.HasFile)
+        {
+            nll.Banner = FileUploadControl.FullPath(fileBanner, Modules.EnumsFile.Newsletter, "", NewsletterFields.Banner.MaxLength);
+        }
+        
         return nll;
     }
 
@@ -102,29 +122,26 @@ public partial class Admin_Account_Control_AddEditNewsletter : System.Web.UI.Use
     {
         if (Page.IsValid)
         {
-            NewsletterEntity nll = GetNewsletter();
+            
             if (hidId.Value == string.Empty)
             {
+                NewsletterEntity nll = GetNewsletter();
+
                 nll.CreatedBy = Util.CurrentUserName;
                 nll.CreatedDate = DateTime.Now;
                 nll.State = NewsletterManager.NEW;
                 nll.Id = Guid.NewGuid();
                 NewsletterManager.CreateInstant().Insert(nll);
                 UpdateGroup(nll.Id);
-                Response.Redirect("/Admin/Account/NewsletterEdit.aspx?id" + nll.Id.ToString());
+                Response.Redirect("/Admin/newsletter/NewsletterEdit.aspx?id=" + nll.Id.ToString());
             }
             else
             {
                 NewsletterEntity tmp = NewsletterManager.CreateInstant().SelectOne(getId());
-                tmp.Subject = nll.Subject;
-                tmp.Body = nll.Body;
-                tmp.IsEnable = nll.IsEnable;
-                tmp.SendDate = nll.SendDate;
-                tmp.UpdatedDate = nll.UpdatedDate;
-                tmp.UpdatedBy = nll.UpdatedBy;
-                tmp.IsSendAll = nll.IsSendAll;
-                NewsletterManager.CreateInstant().Update(tmp);
-                UpdateGroup(tmp.Id);
+                NewsletterEntity nll = GetNewsletter(tmp);
+
+                NewsletterManager.CreateInstant().Update(nll);
+                UpdateGroup(nll.Id);
                 WebUtility.Refesh(Page);
             }
         }

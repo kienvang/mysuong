@@ -9,12 +9,12 @@ using System.Web;
 /// </summary>
 public class ExportExcel
 {
-	public ExportExcel()
-	{
-		//
-		// TODO: Add constructor logic here
-		//
-	}
+    public ExportExcel()
+    {
+        //
+        // TODO: Add constructor logic here
+        //
+    }
 
     public static void Export(DataTable tbl, string filename, Dictionary<string, string> header)
     {
@@ -35,8 +35,12 @@ public class ExportExcel
         {
             foreach (DataColumn dtcol in tbl.Columns)
             {
-                response.Write(tab + (header.ContainsKey(dtcol.ColumnName) ? header[dtcol.ColumnName] : dtcol.ColumnName));
-                tab = "\t";
+                if (header.ContainsKey(dtcol.ColumnName))
+                {
+                    response.Write(tab + (header.ContainsKey(dtcol.ColumnName) ? header[dtcol.ColumnName] : dtcol.ColumnName));
+                    tab = "\t";
+                }
+
             }
         }
         else
@@ -52,11 +56,27 @@ public class ExportExcel
         foreach (DataRow dr in tbl.Rows)
         {
             tab = "";
-            for (int j = 0; j < tbl.Columns.Count; j++)
+            if (header != null)
             {
-                response.Write(tab + Convert.ToString(dr[j]));
-                tab = "\t";
+                for (int j = 0; j < tbl.Columns.Count; j++)
+                {
+                    if (header.ContainsKey(tbl.Columns[j].ColumnName))
+                    {
+                        response.Write(tab + Convert.ToString(dr[j]));
+                        tab = "\t";
+                    }
+
+                }
             }
+            else
+            {
+                for (int j = 0; j < tbl.Columns.Count; j++)
+                {
+                    response.Write(tab + Convert.ToString(dr[j]));
+                    tab = "\t";
+                }
+            }
+
             response.Write("\n");
         }
         response.End();

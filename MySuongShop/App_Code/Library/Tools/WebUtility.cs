@@ -311,7 +311,54 @@ namespace Library.Tools
             return sb.ToString();
         }
 
+        public static string GetLockButtonJscript(Page p, Button btn, string disabledText, ArrayList aCol, string customScript)
+        {
+            disabledText = string.IsNullOrEmpty(disabledText) ? btn.Text : disabledText; disabledText = disabledText.Replace("'", "");
+
+            StringBuilder sb = new StringBuilder();
+            if (btn.CausesValidation && p.Validators.Count > 0 && btn != null)
+            {
+                sb.Append("if (typeof(Page_ClientValidate) == 'function') { ");
+                sb.Append("if (Page_ClientValidate('" + btn.ValidationGroup + "') == false) { return false; }} ");
+            }
+
+            if (!String.IsNullOrEmpty(customScript))
+            {
+                sb.Append(customScript);
+            }
+
+            PostBackOptions opt = new PostBackOptions(btn, "", "", false, true, true, true, true, btn.ValidationGroup);
+
+            sb.Append(p.ClientScript.GetPostBackEventReference(opt));
+            sb.Append(";");
+
+            if (String.IsNullOrEmpty(customScript))
+            {
+                sb.Append("this.style.display='none';this.value='" + disabledText + "';");
+            }
+
+            if (aCol != null)
+            {
+                foreach (Control c in aCol)
+                {
+                    if (c is LinkButton)
+                    {
+                        sb.Append("document.getElementById('" + c.ClientID + "').style.display='none';");
+                        sb.Append("document.getElementById('" + c.ClientID + "').value='dadasdsadas';");
+                    }
+
+                }
+            }
+
+            return sb.ToString();
+        }
+
         public static string GetLockButtonJscript(Page p, LinkButton btn, string disabledText, string customScript)
+        {
+            return GetLockButtonJscript(p, btn, disabledText, null, customScript);
+        }
+
+        public static string GetLockButtonJscript(Page p, Button btn, string disabledText, string customScript)
         {
             return GetLockButtonJscript(p, btn, disabledText, null, customScript);
         }

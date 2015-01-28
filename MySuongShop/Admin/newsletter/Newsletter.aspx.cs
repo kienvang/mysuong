@@ -17,13 +17,13 @@ public partial class Admin_Account_Newsletter : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        cgridNewsletter.Init(Page);
+        CGridView1.Init(this);
         LoadData();
     }
 
     public void LoadData()
     {
-        cgridNewsletter.CDataBind(NewsletterManager.CreateInstant().GetAll());
+        CGridView1.CDataBind(NewsletterManager.CreateInstant().GetAll());
     }
 
     public string getState(string state)

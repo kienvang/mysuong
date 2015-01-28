@@ -40,9 +40,9 @@ namespace LayerHelper.ShopCake.BLL
 			return new OrderTempManager();
 		}
 
-        public DataTable GetAll(string customer, string product, string date)
+        public DataTable GetAll(string customer, string product, string date, string phone)
         {
-            string strSQL = "Select t.ProductName, Amount, Discount, c.Name as CustomerName, e.Name as EmployeeName, b.Name as BranchName, OrderDate " +
+            string strSQL = "Select t.ProductName, Amount, Discount, c.Name as CustomerName, e.Name as EmployeeName, c.Phone, b.Name as BranchName, CONVERT(VARCHAR(19),[OrderDate], 105) + ' ' + CONVERT(VARCHAR(19),[OrderDate], 108) as OrderDate " +
                             "From OrderTemp t INNER JOIN CustomerCollection c ON t.CustomerId = c.Id " +
                             "    LEFT JOIN Employee e ON t.EmployeeId = e.Id " +
                             "    LEFT JOIN Branch b ON e.BranchId = b.Id " +
@@ -55,6 +55,12 @@ namespace LayerHelper.ShopCake.BLL
             {
                 where.Add("c.Name LIKE '%' + @customer + '%'");
                 param["customer"] = customer;
+            }
+
+            if (phone != string.Empty)
+            {
+                where.Add("c.Phone LIKE '%' + @phone + '%'");
+                param["phone"] = phone;
             }
 
             if (product != string.Empty)

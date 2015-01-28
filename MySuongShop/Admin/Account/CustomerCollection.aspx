@@ -4,6 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Holder_Content" Runat="Server">
     <h3>Danh sách khách hàng</h3>
+    <asp:Button ID="btnExport" runat="server" Text="Excel" CssClass="btn btn-primary" OnClick="btnExport_Click" />
     <cc1:CGridViewBootstrap ID="CGridView1" runat="server">
         <Columns>
             <asp:TemplateField HeaderText="STT" HeaderStyle-Width="10px" ItemStyle-HorizontalAlign="Center">

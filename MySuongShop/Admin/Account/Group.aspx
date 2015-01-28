@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Holder_Content" runat="Server">
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-xs-12 col-sm-12">
             <div class="box box-primary">
                 <div class="box-header">
                     <h3 class="box-title">Quản lý nhóm</h3>

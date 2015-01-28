@@ -40,7 +40,7 @@ public partial class Admin_Account_Control_NewsletterProduct : System.Web.UI.Use
 
     public void LoadNewsletter()
     {
-        cgridProduct.CDataBind(NewsletterManager.CreateInstant().GetProductSearch(getId(), txtProductName.Text.Trim(), txtCatName.Text.Trim(), txtPriceFrom.Text.Trim(), txtPriceTo.Text.Trim()));
+        cgridProduct.CDataBind(NewsletterManager.CreateInstant().GetProductSearch(getId(), txtProductName.Text.Trim(), txtCatName.Text.Trim(), "", ""));
     }
 
     protected void btnSearch_Click(object sender, EventArgs e)

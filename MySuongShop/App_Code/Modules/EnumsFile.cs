@@ -28,6 +28,7 @@ namespace Modules
         public const string Document = "/userfiles/Document";
         public const string DocumentImage = "/userfiles/DocumentImage";
         public const string Code = "/userfiles/Code";
+        public const string Newsletter = "/userfiles/newsletter";
     }
 
     public class EnumsMediaType

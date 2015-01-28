@@ -1,14 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/MasterPageBootstrap_2col.master" AutoEventWireup="true" CodeFile="Order.aspx.cs" Inherits="Admin_Employee_Order" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/MasterPageBootStrap.master" AutoEventWireup="true" CodeFile="Order.aspx.cs" Inherits="Admin_Employee_Order" %>
 
-<%@ Register Src="Controls/Menu.ascx" TagName="Menu" TagPrefix="uc1" %>
 <%@ Register Namespace="CommonClassLibrary" TagPrefix="cc1" %>
 <%@ Import Namespace="Library.Tools" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="header" runat="Server">
     <h1>Nhân viên</h1>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="Holder_menu" runat="Server">
-    <uc1:Menu ID="Menu1" runat="server" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Holder_Content" runat="Server">
     <h3>Bán hàng</h3>
@@ -16,6 +12,12 @@
         <div class="col-sm-6 form-group">
             <label>Tên khách hàng</label>
             <asp:TextBox ID="txtCustomer" runat="server" CssClass="form-control"></asp:TextBox>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 form-group">
+            <label>Số điện thoại</label>
+            <asp:TextBox ID="txtPhone" runat="server" CssClass="form-control"></asp:TextBox>
         </div>
     </div>
     <div class="row">
@@ -54,6 +56,11 @@
                     <asp:TemplateField HeaderText="Khách hàng" HeaderStyle-Width="15%">
                         <ItemTemplate>
                             <%# Eval("CustomerName")%>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Điện thoại" HeaderStyle-Width="10%">
+                        <ItemTemplate>
+                            <%# Eval("Phone")%>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Tiền hóa đơn" HeaderStyle-Width="5%">

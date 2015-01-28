@@ -16,13 +16,13 @@ public partial class Admin_Employee_Order : System.Web.UI.Page
 
     void LoadData()
     {
-        DataTable data = OrderTempManager.CreateInstant().GetAll(txtCustomer.Text, txtProduct.Text, txtDate.Text);
+        DataTable data = OrderTempManager.CreateInstant().GetAll(txtCustomer.Text, txtProduct.Text, txtDate.Text, txtPhone.Text);
         CGridView1.CDataBind(data);
     }
 
     protected void btnExport_Click(object sender, EventArgs e)
     {
-        DataTable data = OrderTempManager.CreateInstant().GetAll(txtCustomer.Text, txtProduct.Text, txtDate.Text);
+        DataTable data = OrderTempManager.CreateInstant().GetAll(txtCustomer.Text, txtProduct.Text, txtDate.Text, txtPhone.Text);
         ExportExcel.Export(data, "Order.xls");
     }
 
