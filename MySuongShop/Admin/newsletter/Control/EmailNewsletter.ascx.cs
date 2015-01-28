@@ -22,7 +22,7 @@ public partial class Admin_newsletter_Control_EmailNewsletter : System.Web.UI.Us
     {
         LoadData();
         NewsletterEntity nl = NewsletterManager.CreateInstant().SelectOne(Id);
-        EmailTemplatesEntity template = EmailTemplatesManager.CreateInstant().GetFormatEmailNewsletter(nl.Body, Util.RenderControl((Control)control));
+        EmailTemplatesEntity template = EmailTemplatesManager.CreateInstant().GetFormatEmailNewsletter(nl, Util.RenderControl((Control)control));
         return template.Body;
     }
 

@@ -190,13 +190,14 @@ namespace LayerHelper.ShopCake.BLL
             return format;
         }
 
-        public EmailTemplatesEntity GetFormatEmailNewsletter(string body, string product)
+        public EmailTemplatesEntity GetFormatEmailNewsletter(NewsletterEntity nll, string product)
         {
             EmailTemplatesEntity format = new EmailTemplatesEntity();
             string content = GetFileTemplateNewsletter();
             format.Subject = "";
             string show = string.IsNullOrEmpty(product.Trim()) ? "none" : "block";
-            format.Body = content.Replace("[body/]", body).Replace("[product/]", product).Replace("[show/]", show);
+            string banner = !string.IsNullOrEmpty(nll.Banner) ? "<img src='" + Library.Tools.UrlBuilder.RootUrl + nll.Banner + "' style='width:700px' />" : "";
+            format.Body = content.Replace("[body/]", nll.Body).Replace("[product/]", product).Replace("[show/]", show).Replace("[banner/]", banner);
             return format;
         }
 

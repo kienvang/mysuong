@@ -18,8 +18,8 @@
 
         <div class="form-group">
             <label>Banner</label>
-            <asp:Image ID="imgBanner" runat="server" Visible="false" />
             <asp:FileUpload ID="fileBanner" runat="server" />
+            <asp:Image ID="imgBanner" runat="server" Visible="false" />
         </div>
 
         <div class="form-group">
